@@ -1,0 +1,18 @@
+body {
+    padding-top: 10px;
+    padding-bottom: 25px;
+  }
+  [class*="col-"], footer {
+    background-color: rgb(229, 238, 229);
+    /* border: 1px solid black;
+    border-radius: 6px; */
+    /* line-height: 40px; */
+    /* text-align: center; */
+  }
+.container{
+  background-color: rgb(229, 238, 229);
+
+}
+h1{
+    text-align: center;
+}
