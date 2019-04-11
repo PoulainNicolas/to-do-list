@@ -7,7 +7,11 @@
     $resultat = $db->query('SELECT * FROM todo');
     $resultArchive = $db->query('SELECT * FROM done');
 
-  
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+                
+    
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +26,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="main.js"></script>
 </head>
 <body>
     
@@ -49,14 +52,14 @@
                         // Une chaîne de caractères (DOMString) qui représente la valeur de la case à cocher. 
                         // Cette chaîne de caractères n'est pas affichée côté client mais est envoyée au serveur comme 
                         // valeur associée à la donnée envoyée avec le nom de la case à cocher. 
-                        echo '<div class="form-check"><input class="form-check-input" type="checkbox" name="checkbox[]" value="'.$donnees['todo'].'">
+                        echo '<div class="form-check"><input class="form-check-input" type="checkbox" id="myCheckbox" name="checkbox[]" value="'.$donnees['todo'].'">
                         <label>' .$donnees['todo'] . '</label></div>';
                     } 
                     $resultat->closeCursor();
                     ?>
             </div>
             
-            <button type="submit" class="btn btn-outline-primary" name="submit">Fait</button>
+            <button type="submit" class="btn btn-outline-primary" name="submit" id="fait">Fait</button>
             </form>
         </div>
 
@@ -70,7 +73,7 @@
                         // print_r($resultArchive);
                         // print_r($result);
                         echo '<div class="form-check"><input class="form-check-input" type="checkbox" name="checkbox[]" value="'.$result['done'].'">
-                        <label>' .$result['done'] . '</label></div>';
+                        <label><del>' .$result['done'] . '</del></label></div>';
                     } 
                     $resultArchive->closeCursor();
                 ?>
@@ -86,10 +89,11 @@
             <h2 class="display-6">Ajouter des tâches</h2>
             <form action="add.php" method="post">
                 <div class="form-group">
-                    <input type="text" name="todo" class="form-control" placeholder="Ecrivez une nouvelle tâche">
+                    <input type="text" name="todo" class="form-control"  placeholder="Ecrivez une nouvelle tâche">
                 </div>
 
                 <button type="submit" name="add" class="btn btn-outline-primary">Enregistrer</button>
+                
             </form>
         </div>
 
@@ -98,6 +102,7 @@
    
 </div>
    
+<!-- <script src="script.js"></script> -->
 
 </body>
 </html>

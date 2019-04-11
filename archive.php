@@ -10,6 +10,8 @@
                     $archive = $db->exec('INSERT INTO done (done) VALUES("'.$_POST['checkbox'][$i].'")');
                     // je dois supprimer 
                     $delete = $db->exec('DELETE FROM todo WHERE todo ="'.$_POST['checkbox'][$i].'"');
+                    // $delete = $db->exec('DELETE FROM todo WHERE todo ="'.$_POST['checkbox'][$i].'"');
+
                 }
             }
         }           
